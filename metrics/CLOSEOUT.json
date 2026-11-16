@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0.0",
+  "checked_utc": "2026-11-16T09:13:20.214258+00:00",
+  "state": "COMPLETE",
+  "run_id": "cctv600-20261116T073208561699Z",
+  "scientific_binding": "aa621de9ab1ca797a8e103df3bfb21f87307fc436f4701da7b094df33e8a68eb",
+  "source_binding_verified": true,
+  "quality_models_expected": 17,
+  "quality_models_complete": 17,
+  "accepted_model_image_records": 10200,
+  "membership_totals": {
+    "missing": 0,
+    "unexpected": 0,
+    "duplicate": 0,
+    "invalid": 0
+  },
+  "gt_people": 769,
+  "quality_model_calls_in_closeout": 0,
+  "timing_model_calls_in_closeout": 440,
+  "continuation": {
+    "run_id": "cctv600-timing-cont-20261116T090209308785Z",
+    "manifest_sha256": "310241f410b0801b5095256d52bd589a582d505c56ae49ce6840f57832df7ff0",
+    "completion_sha256": "4b99fbffaa75efe37e71a30127996bf9908d3c5e9b703fb4cb2cb46b7a1a77bb",
+    "controller_sha256": "eae93826a665ba5ec877ff0f56c7c8f0923f194b18db8e74239b9cdc782de607",
+    "web_worker_restoration": {
+      "at_utc": "2026-11-16T09:04:39.890746+00:00",
+      "returncode": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  },
+  "full_rescores_in_closeout": 0,
+  "ledger_events": {
+    "STARTED_FRAME": 10200,
+    "ACCEPTED_PACKET": 10200
+  },
+  "clean_timing_models_complete": 17,
+  "accepted_clean_rounds": 51,
+  "timing_rounds_expected": 51,
+  "timing_rounds_pending": [],
+  "original_run_hashes": {
+    "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/outputs/cctv600-20261116T073208561699Z/PREPARED.json": "6d4356d23205d6eab5e9e1d24490de4ebf9255d8139c65ff57deff60bc56d578",
+    "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/outputs/cctv600-20261116T073208561699Z/COMPLETION.json": "7ad0ab53954bc96680e9db498de6c79804502fbd96eeb0c8c28e94200c7d562d",
+    "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/outputs/cctv600-20261116T073208561699Z/STATUS.json": "427b67236bf2751e99e30f5bc48553ebc039ccd23b38c720d982aec0616b8741"
+  },
+  "reporter_sha256": "ffee1128693ddc71ecff768bed3260ce8fc4c438afec870b97ce93bcf65c9ef4",
+  "gallery_panels_checked": 80,
+  "checks_performed": [
+    "Frozen scientific source/config identity",
+    "Exact 600-ID membership per model",
+    "Accepted packet audit reuse and post-audit timestamp change detection",
+    "10,200 receipt-to-packet-hash bindings",
+    "Per-image counts and immutable ledger consistency",
+    "Unrounded precision/recall/F1 formulas",
+    "17 maxDet parity records",
+    "51 clean timing round bindings, sample order and resource observations",
+    "Per-observation adapter stage sum",
+    "Original completion/quality metric immutability",
+    "80 fixed-gallery manifest memberships and image geometry"
+  ],
+  "packet_audit_reuse": "Reuse accepted per-packet readback/hash/scoring audits; compare exact filenames, receipts and per-image counts; rehash only post-audit timestamp changes",
+  "gpu_timing_blocker": null
+}

@@ -1,9 +1,9 @@
-# สถานะ YOLO CCTV600
+# สถานะปิดรอบ YOLO CCTV600
 
-Run `cctv600-20261116T073208561699Z`
+Run `cctv600-20261116T073208561699Z` · ตรวจปิดรอบเมื่อ 2026-11-16T16:13:20+07:00 (เวลาไทย)
 
-Accuracy complete 17/17 checkpoints.
+คะแนนคุณภาพครบ **17/17 โมเดล × 600 ภาพ = 10,200 ผลรายภาพ** ผ่านการตรวจรับ เวลาหลักครบ **17/17 โมเดล**
 
-สถานะcontrollerจริงดูด้วยคำสั่งในREADME ซึ่งตรวจprocess identityและartifactsปัจจุบัน
+สถานะ `COMPLETE` คุณภาพครบ 17 ตัวและเวลาครบ 51 clean rounds เติมเฉพาะ Nano 4 รอบผ่าน fresh timing continuation แล้วเปิด worker เว็บคืน ไม่มีการรัน quality ซ้ำ
 
-อ่าน [ผลรวม](MASTER_RESULTS.md)
+อ่าน [รายงานหลัก](MASTER_RESULTS.md), [สรุปเลือกโมเดล](EXECUTIVE_SUMMARY_TH.md) และ [ผลตรวจปิดรอบ](metrics/CLOSEOUT.json)
