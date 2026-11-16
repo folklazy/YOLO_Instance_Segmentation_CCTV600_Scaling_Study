@@ -1,0 +1,227 @@
+{
+  "source": "YOLO_Instance_Segmentation_MOTS20_Scaling_Study/metrics/MODEL_COMPLEXITY_MASTER.csv",
+  "reason": "Static architecture estimates reused after exact checkpoint SHA256 equality, same640 input and native NMS path",
+  "models": {
+    "yolo26x-seg.pt": {
+      "checkpoint_sha256": "92b3de0065766a17180d6219858717dc9d03cdce8a3ca9576c97fd75aabb64f3",
+      "loaded_parameters": 70693800,
+      "runtime_fused_parameters": 62819132,
+      "gflops_estimate": 338.2033408,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolo11x-seg.pt": {
+      "checkpoint_sha256": "4e53a5f5fd3ee2ae3361c62169c6bb3ed4ae251dd0e57606e230955aa52d919c",
+      "loaded_parameters": 62142656,
+      "runtime_fused_parameters": 62094528,
+      "gflops_estimate": 297.8924032,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolov9e-seg.pt": {
+      "checkpoint_sha256": "d7803f5946df2897c1746658bdc46c61c2de1a740ce740804f7099c8abbe660e",
+      "loaded_parameters": 60512800,
+      "runtime_fused_parameters": 59743360,
+      "gflops_estimate": 238.3325696,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolov8x-seg.pt": {
+      "checkpoint_sha256": "c333d6a7aff884ec821050eacdab29871f3edd10d996cf48746a02f8e01f1b5d",
+      "loaded_parameters": 71827888,
+      "runtime_fused_parameters": 71797696,
+      "gflops_estimate": 329.1888128,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolo26l-seg.pt": {
+      "checkpoint_sha256": "636024306410afa1732692322fba57d22ea2b1c2f07613fcee131a93d7dd380c",
+      "loaded_parameters": 31515528,
+      "runtime_fused_parameters": 27965436,
+      "gflops_estimate": 151.3039872,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolo11l-seg.pt": {
+      "checkpoint_sha256": "cabe90049795dfc9a370b7934d6dec7f6b9e44a20e573b0ff81b7e205512c872",
+      "loaded_parameters": 27678368,
+      "runtime_fused_parameters": 27646272,
+      "gflops_estimate": 133.1761664,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolov9c-seg.pt": {
+      "checkpoint_sha256": "73c2ac85148fa6fa560ef9933f8931e40d0dbc8f8c7c0a6d165145b6e5713565",
+      "loaded_parameters": 27897120,
+      "runtime_fused_parameters": 27686208,
+      "gflops_estimate": 149.3395968,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolov8l-seg.pt": {
+      "checkpoint_sha256": "ca3ec94c445aeaf79c2b57982fb451060f18a7561e2c20b4d26bb9dc1fcabf93",
+      "loaded_parameters": 45997728,
+      "runtime_fused_parameters": 45973568,
+      "gflops_estimate": 211.0597632,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolo26m-seg.pt": {
+      "checkpoint_sha256": "16b636f04e8fb6a325b3370f22dc5e5535ff473e384f4d041fd28d788f6ee9f5",
+      "loaded_parameters": 27112072,
+      "runtime_fused_parameters": 23569148,
+      "gflops_estimate": 132.7808512,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolo11m-seg.pt": {
+      "checkpoint_sha256": "eb9a06f63e2206c35d68d839b08c362429ebecf933ad54c1ad68b2fd001c17cf",
+      "loaded_parameters": 22420896,
+      "runtime_fused_parameters": 22396992,
+      "gflops_estimate": 113.9681792,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolov8m-seg.pt": {
+      "checkpoint_sha256": "51fa7e5ef385efa6d5b1d8e31b73399be6ed5d7ca71bda4bd4b2794bb445c4f4",
+      "loaded_parameters": 27285968,
+      "runtime_fused_parameters": 27268704,
+      "gflops_estimate": 104.9772544,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolo26s-seg.pt": {
+      "checkpoint_sha256": "3da1d83e31caec96f9300eb4064f4f62882c133c7c264d63dfe61a7c197837a4",
+      "loaded_parameters": 11505800,
+      "runtime_fused_parameters": 10396300,
+      "gflops_estimate": 37.6619008,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolo11s-seg.pt": {
+      "checkpoint_sha256": "1caa81c0195412efa411b632bcfb8c184939dddb6ae41f6a80c41b211ff257c3",
+      "loaded_parameters": 10113248,
+      "runtime_fused_parameters": 10097776,
+      "gflops_estimate": 33.3635072,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolov8s-seg.pt": {
+      "checkpoint_sha256": "0bac0770b55e5eb5b76a61bc535673288dcec36c2bc0cd25ee0d584c632f3413",
+      "loaded_parameters": 11821056,
+      "runtime_fused_parameters": 11810560,
+      "gflops_estimate": 40.3390976,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolo26n-seg.pt": {
+      "checkpoint_sha256": "361fbfabab285c3237700b6bb91d7ecfa602cd945fffda8dbe1242829b71e73f",
+      "loaded_parameters": 3126280,
+      "runtime_fused_parameters": 2722980,
+      "gflops_estimate": 10.6303744,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolo11n-seg.pt": {
+      "checkpoint_sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152",
+      "loaded_parameters": 2876848,
+      "runtime_fused_parameters": 2868664,
+      "gflops_estimate": 9.9593344,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    },
+    "yolov8n-seg.pt": {
+      "checkpoint_sha256": "a7cd8f929e1903d78a12a48efecab430209f18dc46cb96c3599a5980c63c423c",
+      "loaded_parameters": 3409968,
+      "runtime_fused_parameters": 3404320,
+      "gflops_estimate": 12.1411072,
+      "input_shape": [
+        1,
+        3,
+        640,
+        640
+      ],
+      "source_csv_sha256": "80b8da2d05581ddd13a48040160639ed035697b47d824e8d9f341337fac19fb6"
+    }
+  }
+}

@@ -1,0 +1,104 @@
+{
+  "yolo26x-seg.pt": {
+    "sha256": "92b3de0065766a17180d6219858717dc9d03cdce8a3ca9576c97fd75aabb64f3",
+    "bytes": 142129861,
+    "reference_gflops": 338.2033408,
+    "reference_parameters": 70693800
+  },
+  "yolo11x-seg.pt": {
+    "sha256": "4e53a5f5fd3ee2ae3361c62169c6bb3ed4ae251dd0e57606e230955aa52d919c",
+    "bytes": 125090821,
+    "reference_gflops": 297.8924032,
+    "reference_parameters": 62142656
+  },
+  "yolov9e-seg.pt": {
+    "sha256": "d7803f5946df2897c1746658bdc46c61c2de1a740ce740804f7099c8abbe660e",
+    "bytes": 122212466,
+    "reference_gflops": 238.3325696,
+    "reference_parameters": 60512800
+  },
+  "yolov8x-seg.pt": {
+    "sha256": "c333d6a7aff884ec821050eacdab29871f3edd10d996cf48746a02f8e01f1b5d",
+    "bytes": 144101612,
+    "reference_gflops": 329.1888128,
+    "reference_parameters": 71827888
+  },
+  "yolo26l-seg.pt": {
+    "sha256": "636024306410afa1732692322fba57d22ea2b1c2f07613fcee131a93d7dd380c",
+    "bytes": 63700037,
+    "reference_gflops": 151.3039872,
+    "reference_parameters": 31515528
+  },
+  "yolo11l-seg.pt": {
+    "sha256": "cabe90049795dfc9a370b7934d6dec7f6b9e44a20e573b0ff81b7e205512c872",
+    "bytes": 56096965,
+    "reference_gflops": 133.1761664,
+    "reference_parameters": 27678368
+  },
+  "yolov9c-seg.pt": {
+    "sha256": "73c2ac85148fa6fa560ef9933f8931e40d0dbc8f8c7c0a6d165145b6e5713565",
+    "bytes": 56470235,
+    "reference_gflops": 149.3395968,
+    "reference_parameters": 27897120
+  },
+  "yolov8l-seg.pt": {
+    "sha256": "ca3ec94c445aeaf79c2b57982fb451060f18a7561e2c20b4d26bb9dc1fcabf93",
+    "bytes": 92417004,
+    "reference_gflops": 211.0597632,
+    "reference_parameters": 45997728
+  },
+  "yolo26m-seg.pt": {
+    "sha256": "16b636f04e8fb6a325b3370f22dc5e5535ff473e384f4d041fd28d788f6ee9f5",
+    "bytes": 54750385,
+    "reference_gflops": 132.7808512,
+    "reference_parameters": 27112072
+  },
+  "yolo11m-seg.pt": {
+    "sha256": "eb9a06f63e2206c35d68d839b08c362429ebecf933ad54c1ad68b2fd001c17cf",
+    "bytes": 45400152,
+    "reference_gflops": 113.9681792,
+    "reference_parameters": 22420896
+  },
+  "yolov8m-seg.pt": {
+    "sha256": "51fa7e5ef385efa6d5b1d8e31b73399be6ed5d7ca71bda4bd4b2794bb445c4f4",
+    "bytes": 54921020,
+    "reference_gflops": 104.9772544,
+    "reference_parameters": 27285968
+  },
+  "yolo26s-seg.pt": {
+    "sha256": "3da1d83e31caec96f9300eb4064f4f62882c133c7c264d63dfe61a7c197837a4",
+    "bytes": 23467933,
+    "reference_gflops": 37.6619008,
+    "reference_parameters": 11505800
+  },
+  "yolo11s-seg.pt": {
+    "sha256": "1caa81c0195412efa411b632bcfb8c184939dddb6ae41f6a80c41b211ff257c3",
+    "bytes": 20669228,
+    "reference_gflops": 33.3635072,
+    "reference_parameters": 10113248
+  },
+  "yolov8s-seg.pt": {
+    "sha256": "0bac0770b55e5eb5b76a61bc535673288dcec36c2bc0cd25ee0d584c632f3413",
+    "bytes": 23914764,
+    "reference_gflops": 40.3390976,
+    "reference_parameters": 11821056
+  },
+  "yolo26n-seg.pt": {
+    "sha256": "361fbfabab285c3237700b6bb91d7ecfa602cd945fffda8dbe1242829b71e73f",
+    "bytes": 6719965,
+    "reference_gflops": 10.6303744,
+    "reference_parameters": 3126280
+  },
+  "yolo11n-seg.pt": {
+    "sha256": "55ed65c56c91713d23e8402371c6c49a6fd84f257f7dce452e8d70e41dcbe152",
+    "bytes": 6182636,
+    "reference_gflops": 9.9593344,
+    "reference_parameters": 2876848
+  },
+  "yolov8n-seg.pt": {
+    "sha256": "a7cd8f929e1903d78a12a48efecab430209f18dc46cb96c3599a5980c63c423c",
+    "bytes": 7071756,
+    "reference_gflops": 12.1411072,
+    "reference_parameters": 3409968
+  }
+}

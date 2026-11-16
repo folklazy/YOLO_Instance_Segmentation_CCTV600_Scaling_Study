@@ -1,0 +1,14 @@
+{
+  "images": 600,
+  "eligible_person_boxes": 769,
+  "retained_under50_boxes": 5,
+  "diurnal_counts": {
+    "night": 357,
+    "day": 243
+  },
+  "timing_images": 100,
+  "dataset_membership_sha256": "d9a5cdc80d3b1f462125776e02c2ef1e87be1b881bdd3482e81d72fdaf25d6fc",
+  "bbox_policy": "CLIP_TO_IMAGE_CONTINUOUS_BOUNDS_FOR_SCORING_KEEP_SOURCE_SIZE_ELIGIBILITY",
+  "ignore_policy": "MATCH_VALID_GT_FIRST_THEN_UNMATCHED_BOX_IOA_AGAINST_UNION_OF_IGNORE_RECTANGLES_AND_UNDER50_BOXES",
+  "person_inventory_basis": "USER_ACCEPTED_COMPLETE_600_UNDER_ALL_PERSONS_GTE50_GUIDELINE"
+}

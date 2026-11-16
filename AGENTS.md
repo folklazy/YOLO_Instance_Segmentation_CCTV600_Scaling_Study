@@ -1,0 +1,3 @@
+# Study rules
+
+This master owns the shared source and orchestration. Exact roster17 across5tiers and600inputIDs. Preserve all prior experiments and dataset source files. Native masks are prediction artifacts, bbox metrics are primary. Freeze common policy and hashes before launch. Single detached GPU worker, sequential quality and separate clean timing. No automatic OOM/model retry. Existing accepted packet reuse requires verified bindings. Keep real data/per-image identifiers/logs private. Public outputs are docs/config/code and reviewed aggregate metrics/plots. Report null on incomplete quality or timing. Never adapt scientific settings from partial scores.

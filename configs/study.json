@@ -1,0 +1,92 @@
+{
+  "study_id": "yolo_cctv600_scaling",
+  "protocol_version": "1.0.0",
+  "expected_images": 600,
+  "dataset_membership_sha256": "d9a5cdc80d3b1f462125776e02c2ef1e87be1b881bdd3482e81d72fdaf25d6fc",
+  "device": "0",
+  "batch": 1,
+  "imgsz": 640,
+  "precision": "fp32",
+  "augment": false,
+  "rect": false,
+  "retina_masks": true,
+  "nms": true,
+  "agnostic_nms": false,
+  "nms_iou": 0.7,
+  "ap_confidence_floor": 0.001,
+  "fixed_confidence": 0.25,
+  "matching_iou": 0.5,
+  "ignore_prediction_ioa": 0.5,
+  "max_detections": 1000,
+  "ap_max_dets": 200,
+  "ap_cap_reference": 1000,
+  "ap_cap_tolerance": 0.0001,
+  "minimum_gt_long_side_px": 50,
+  "timing_images": 100,
+  "warmup_iterations": 10,
+  "timing_repeats": 3,
+  "seed": 20261116,
+  "minimum_free_vram_mib": 4096,
+  "minimum_free_disk_gib": 20,
+  "maximum_study_output_gib": 20,
+  "maximum_execution_hours": 8,
+  "automatic_retries": 0,
+  "quality_policy": "ONE_STUDY_GPU_WORKER_MEMORY_GUARDED",
+  "timing_policy": "EXCLUDE_ROUND_WITH_EXTERNAL_GPU_COMPUTE_OR_IDLE_UTILIZATION_ABOVE_5_PERCENT",
+  "person_inventory_basis": "USER_ACCEPTED_COMPLETE_600_UNDER_ALL_PERSONS_GTE50_GUIDELINE",
+  "gt_bbox_coordinates": "CLIP_TO_IMAGE_CONTINUOUS_BOUNDS_FOR_SCORING_KEEP_SOURCE_SIZE_ELIGIBILITY",
+  "ignore_policy": "MATCH_VALID_GT_FIRST_THEN_UNMATCHED_BOX_IOA_AGAINST_UNION_OF_IGNORE_RECTANGLES_AND_UNDER50_BOXES",
+  "tiers": [
+    {
+      "id": "largest",
+      "repository": "YOLO_Large_Seg_CCTV600_Benchmark",
+      "models": [
+        "yolo26x-seg.pt",
+        "yolo11x-seg.pt",
+        "yolov9e-seg.pt",
+        "yolov8x-seg.pt"
+      ]
+    },
+    {
+      "id": "second_largest",
+      "repository": "YOLO_Second_Largest_Seg_CCTV600_Benchmark",
+      "models": [
+        "yolo26l-seg.pt",
+        "yolo11l-seg.pt",
+        "yolov9c-seg.pt",
+        "yolov8l-seg.pt"
+      ]
+    },
+    {
+      "id": "medium",
+      "repository": "YOLO_Medium_Seg_CCTV600_Benchmark",
+      "models": [
+        "yolo26m-seg.pt",
+        "yolo11m-seg.pt",
+        "yolov8m-seg.pt"
+      ]
+    },
+    {
+      "id": "small",
+      "repository": "YOLO_Small_Seg_CCTV600_Benchmark",
+      "models": [
+        "yolo26s-seg.pt",
+        "yolo11s-seg.pt",
+        "yolov8s-seg.pt"
+      ]
+    },
+    {
+      "id": "nano",
+      "repository": "YOLO_Nano_Seg_CCTV600_Benchmark",
+      "models": [
+        "yolo26n-seg.pt",
+        "yolo11n-seg.pt",
+        "yolov8n-seg.pt"
+      ]
+    }
+  ],
+  "allow_tf32": false,
+  "cudnn_benchmark": false,
+  "quality_warmup_calls": 0,
+  "timing_idle_settle_seconds": 10
+}

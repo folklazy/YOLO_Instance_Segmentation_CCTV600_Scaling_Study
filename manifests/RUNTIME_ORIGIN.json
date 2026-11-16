@@ -1,0 +1,14 @@
+{
+  "runtime": {
+    "source": "YOLO_Large_Seg_MOTS20_Benchmark/src/frozen_pilot/yolo_adapter.py",
+    "source_sha256": "d739c5477490b805773e1320e744052152dd1acc9e03719fed4a588ed7b2a36f",
+    "changes": "Package-relative PackedPrediction import only"
+  },
+  "detector": {
+    "source": "YOLO_Large_Seg_MOTS20_Benchmark/src/benchmark_adapter.py",
+    "source_sha256": "c13177d47f40dc59f83e5d5227d796e67c09d915c8573f169131cee39974260d",
+    "changes": "Package-relative import and unfused checkpoint parameter count only"
+  },
+  "preprocessing_postprocessing": "Reused MOTS20 runtime algorithm, FP32 square640 native-mask output",
+  "bbox_evaluator": "New bbox scorer, separate from historical mask evaluator"
+}
