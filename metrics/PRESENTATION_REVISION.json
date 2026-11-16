@@ -970,10 +970,10 @@
     "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/RESEARCH_INSIGHTS_TH.md": "c68d9a56da27201c14c4c75c55cefab4fad36144735a5eedf771129dcf5691d8",
     "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/EXECUTIVE_SUMMARY_TH.md": "45c5f886b2b36ebe142ffa104303475c243506fc570f9cfddd986046bf03cfd9",
     "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/STATUS.md": "fd286d1dde710fc22b84d534ec151430c45a829ea7bbf6cee05cb85966b01a8c",
-    "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/MASTER_RESULTS.md": "2aefabc5fe62357b969bedf0b299863dfb7a15e1e0444d38647251a0dc8a66fd",
-    "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/METRIC_GUIDE_TH.md": "4b477990e49b5a1637f873050516d492756c92f11e23a0100b8d9e0cbfdd0259",
+    "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/MASTER_RESULTS.md": "19acbf6a888a862c0d4dc8e22feb5e1cfd2a59d78399175a0c7cdc8fe93b0df4",
+    "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/METRIC_GUIDE_TH.md": "f4eec5860b903a1b65b803e4303b3acda6308c24279fb44b701ba8159ecb564a",
     "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/MEETING_SUMMARY_TH.md": "b3eb2b59e2f7b1b8fbd2eb6c2b15cc63f2862fa0b871cda59e116c6d38e81162",
-    "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/README.md": "2c21c86cba9713bf52c258e254009ea7c292b6948f126d4c52a6b963c3386366",
+    "YOLO_Instance_Segmentation_CCTV600_Scaling_Study/README.md": "6cf6f43a503dc069b29af48ddce70a2543324e82e7dce78803052de9a556f065",
     "YOLO_Large_Seg_CCTV600_Benchmark/RESULTS_SUMMARY_TH.md": "cbc73abb540dcfdee205c25addb9c4bf0f864164b1c793af22ce483295c042a8",
     "YOLO_Large_Seg_CCTV600_Benchmark/PRESENTATION_SUMMARY_TH.md": "f6f5cb9608f301eb0064e4b3de1e596c6c2d15003ec8ab0c057cf7f7ccdfda89",
     "YOLO_Large_Seg_CCTV600_Benchmark/STATUS.md": "1eddeedff72e87c10a996bb4553e1ff8ecfea8653aeb49d0482ccb197af006d5",
@@ -1075,5 +1075,42 @@
     "Timing composition",
     "Near-tie resource deltas",
     "Machine-readable plotting table"
-  ]
+  ],
+  "protocol_review": {
+    "at_utc": "2026-11-16T10:22:57.849852+00:00",
+    "review_id": "protocol-review-20261116T102257843706Z",
+    "parent_revision_sha256": "489683f913949e91155b2538a9175b5b0eaa3d5cd92b647dd2be851b1d9d3adf",
+    "archive": "outputs/protocol-review-20261116T102257843706Z/archive",
+    "reason": "Explain actual protocol reuse/adaptations and correct nonzero AP cap deltas",
+    "common_config_fields_equal": 18,
+    "checkpoint_manifest_hashes_equal": 17,
+    "baseline_framework_hashes_equal": 7,
+    "nonzero_cap_difference_models": [
+      "yolov8s-seg.pt",
+      "yolo26n-seg.pt",
+      "yolov8n-seg.pt"
+    ],
+    "max_absolute_cap_difference": 2.2855779105435126e-05,
+    "max_difference_metric": "yolo26n-seg.pt box_ap50",
+    "cap_tolerance": 0.0001,
+    "frozen_scientific_sources_changed": false,
+    "model_calls": 0,
+    "full_rescores": 0,
+    "previous_closeout_generator_git_revision": "e74e2facfc24ef1b2b223bb78388ca7ff21ba9dd",
+    "previous_closeout_generator_sha256": "ffee1128693ddc71ecff768bed3260ce8fc4c438afec870b97ce93bcf65c9ef4",
+    "corrected_closeout_generator_sha256": "33cebaf334202f7ee071428807c5179185ba5b1cb1bc161bde6f7f8167216b25",
+    "before_sha256": {
+      "MASTER_RESULTS.md": "2aefabc5fe62357b969bedf0b299863dfb7a15e1e0444d38647251a0dc8a66fd",
+      "METRIC_GUIDE_TH.md": "4b477990e49b5a1637f873050516d492756c92f11e23a0100b8d9e0cbfdd0259",
+      "README.md": "2c21c86cba9713bf52c258e254009ea7c292b6948f126d4c52a6b963c3386366",
+      "analysis/closeout.py": "ffee1128693ddc71ecff768bed3260ce8fc4c438afec870b97ce93bcf65c9ef4",
+      "metrics/PRESENTATION_REVISION.json": "489683f913949e91155b2538a9175b5b0eaa3d5cd92b647dd2be851b1d9d3adf"
+    },
+    "after_sha256": {
+      "MASTER_RESULTS.md": "19acbf6a888a862c0d4dc8e22feb5e1cfd2a59d78399175a0c7cdc8fe93b0df4",
+      "METRIC_GUIDE_TH.md": "f4eec5860b903a1b65b803e4303b3acda6308c24279fb44b701ba8159ecb564a",
+      "README.md": "6cf6f43a503dc069b29af48ddce70a2543324e82e7dce78803052de9a556f065",
+      "analysis/closeout.py": "33cebaf334202f7ee071428807c5179185ba5b1cb1bc161bde6f7f8167216b25"
+    }
+  }
 }

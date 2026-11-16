@@ -148,3 +148,72 @@ METRICS.json และ PACKET_AUDIT.json ใน outputs ของแต่ละ
 TIMING_COMPOSITION.csv คง stage means เดิมและเพิ่มสัดส่วน preprocess/forward/postprocess ต่อ adapter total ส่วน PLOT_READY_RESULTS.csv เพิ่ม family, display order และ Pareto flags โดยคะแนน/เวลาคงเดิม NEAR_TIE_RESOURCE_DELTAS.csv ใช้ B−A และหาร A สำหรับร้อยละสัมพัทธ์ ทิศทางนี้ต่างจาก SCALING_DELTAS.csv ที่ใช้ smaller−larger
 
 TIER_WINNERS.csv มีเจ็ดเป้าหมายในแต่ละ tier ได้แก่ Box AP, AP75, Recall, forward time, adapter time, FPS และ allocated VRAM คะแนน/FPS ใช้ค่าสูงสุด ส่วนเวลา/VRAM ใช้ค่าต่ำสุด เก็บ exact ties ทุกตัวและเก็บค่าคะแนนต้นฉบับเป็น fraction
+
+<a id="protocol-comparison"></a>
+
+## 11. Protocol ของ CCTV600 ใช้ร่วมกับ MOTS20 ส่วนใดบ้าง
+
+ตรวจเอกสาร config, frozen inference source, evaluator และ accepted records เมื่อ 16 พฤศจิกายน 2026 การตรวจนี้ใช้หลักฐานเดิม และแก้คำอธิบายผล maxDet ที่เคยระบุว่าผลต่างเป็นศูนย์ทุกโมเดล
+
+### 11.1 สิ่งที่ตรวจว่าใช้ร่วมกันจริง
+
+เทียบ config ร่วม 18 fields ได้ค่าเท่ากัน รวม device, batch, input size, FP32, augmentation, NMS path, confidence, IoU thresholds, candidate cap, AP cap, warmup และจำนวน timing repeats ตรวจ checkpoint manifest SHA256 ตรงกันครบ 17 ตัว และ framework-source hashes ของ Ultralytics ที่ MOTS20 ตรึงไว้ตรงกันครบ 7 ไฟล์
+
+ส่วน detector runtime ใช้อัลกอริทึมจาก frozen MOTS20 โดยต่างที่ package-relative imports และการบันทึกจำนวน parameters ก่อน fusion การเก็บ packet/RLE เป็นโค้ดจัดเก็บของ CCTV600 ส่วน evaluator ของ CCTV600 เขียนสำหรับ bbox โดยเฉพาะ แหล่งเปรียบเทียบอยู่ใน [runtime provenance](manifests/RUNTIME_ORIGIN.json), [MOTS20 baseline](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study/blob/main/provenance/BASELINE_REFERENCE.json), [MOTS20 mask evaluator](https://github.com/folklazy/YOLO_Large_Seg_MOTS20_Benchmark/blob/main/src/frozen_pilot/metrics.py) และ [CCTV600 bbox evaluator](src/cctv600/scoring.py)
+
+| ส่วน | MOTS20 ที่รันจริง | CCTV600 ที่รันจริง | ผลต่อการอ่านคะแนน |
+| --- | --- | --- | --- |
+| Model roster | 17 segmentation checkpoints, X/E → L/C → M → S → N | Checkpoint manifest hashes ตรงกันทั้ง 17 ตัว | เปรียบเทียบ checkpoint เดิมข้ามข้อมูลได้เมื่อระบุ metric และ domain กำกับ |
+| Input | BGR → aspect-preserving centered letterbox 640×640, padding 114 → RGB BCHW /255 | อัลกอริทึม runtime เดียวกัน | รับภาพเต็มเฟรมหนึ่งภาพต่อ call |
+| Model execution | FP32, batch 1, ไม่มี extra TTA, Person class 0, YOLO26 one-to-many/NMS | ค่าเดียวกันใน config ที่ตรวจ | ควบคุมเส้นทาง inference ร่วมได้ |
+| Thresholds | AP floor 0.001, fixed confidence 0.25, NMS box IoU 0.70 | ค่าเดียวกัน | Threshold confidence/NMS มีความหมายร่วมกัน |
+| GT และประชากร | 2,862 frames, 26,894 Person mask instances | 600 images, 769 eligible visible person boxes | จำนวนเหล่านี้เป็น annotation รายภาพ บุคคลเดิมอาจปรากฏหลายภาพ |
+| Eligibility | ใช้ valid Person masks ใน GT ที่ให้มา ไม่มีเงื่อนไขด้านยาว bbox 50 px ใน loader | max(width,height) ≥50 px จาก source visible bbox ก่อน clipping | คะแนน CCTV600 มีขอบเขตขนาดคนตามที่กำหนด |
+| Fixed matching | Greedy 1–1 ที่ mask IoU ≥0.50 | Greedy 1–1 ที่ bbox IoU ≥0.50 | ค่า IoU 0.50 วัดรูปทรงคนละแบบ จึงตีความ P/R/F1 ตามชนิด matching |
+| Ties | Prediction order เมื่อ score เท่ากัน, GT object ID เมื่อ IoU เท่ากัน | ใช้ bbox geometry ในการเรียง ties | กติกาตัดสินเสมอมีรายละเอียดต่างกัน |
+| Ignore | Class-10 pixel-mask union, prediction-mask IoA ≥0.50 | Explicit ignore rectangles + bbox คนต่ำกว่า 50 px, prediction-box IoA ≥0.50 | ใช้ GT-first เหมือนกัน แต่พื้นที่ที่ได้รับยกเว้นต่างรูปแบบ |
+| AP | COCO-style segmentation AP จาก mask IoUs | COCO-style bbox AP จาก box IoUs | ใช้ 10 IoU thresholds และ 101 recall points ร่วมกัน แต่ชนิด AP ต่างกัน |
+| AP cap | เลือก 200 จาก sensitivity caps 100/200/300/1000 ก่อน full run | ตรึง 200 แล้วตรวจเทียบ 1000 บน 100 ภาพเดิมของแต่ละโมเดล | ผ่านเกณฑ์ผลต่าง <0.0001 ทุกโมเดล |
+| Timing sample | 25 เฟรมต่อ sequence รวม 100 ภาพ, seed 20260929 | 100 ภาพจาก metadata round-robin, seed 20261116 | ทุกโมเดลในแต่ละ study ใช้ sample เดียวกัน แต่ sample ข้าม dataset ต่างกัน |
+| Clean timing | Warmup 10 ต่อรอบ, 3×100 measured observations, synchronize CUDA | หลักการและขอบเขต adapter เดียวกัน | เปรียบเทียบภายใน CCTV600 ได้ตาม workload นี้ |
+| FPS และ VRAM | FPS=1000/mean adapter ms, peak หลัง warmup รวม resident model | นิยามเดียวกัน | การเปรียบเทียบตัวเลขข้าม dataset ต้องคำนึงถึง image/mask workload |
+| กลุ่มผลย่อย | MOTS20 sequences 02/05/09/11 | Day/night metadata และ GT size-band recall | กลุ่มเหล่านี้ใช้บรรยายข้อมูลตามที่มี |
+| Outputs และ recovery | Run-scoped lossless masks, แยก contaminated timing และ clean repetitions | Atomic packets/receipts/ledger, exact-ID reconciliation และ linked timing segment | รูปแบบ orchestration และ accounting ต่างกัน |
+
+### 11.2 ส่วนที่ GT ปัจจุบันยังรองรับไม่ถึง MOTS20
+
+GT ของ CCTV600 ให้กรอบคนและ mask สี่ส่วนที่เลือก ส่วน Person Mask AP, person-mask IoU/Dice และการวัดขอบตัวคนตามแบบ MOTS20 ต้องมี silhouette GT ที่ตรวจรับครบรายคน การ union เฉพาะ Hair/Face/Upper/Lower ยังขาดส่วนอื่นของคน จึงใช้แทน GT คนทั้งตัวไม่ได้
+
+Box AP รองรับการวัดตำแหน่งและความตรงของกรอบคนได้โดยตรง ส่วนการยืนยันว่าขอบ mask ตามแขน ขา หรือบริเวณคนซ้อนกันถูกต้องเพียงใด ต้องใช้ GT mask ที่ตรงกับคำถามนั้น คะแนนจาก union สี่ส่วนจะต้องประกาศชื่อ target และ valid domain เพิ่มเป็นอีกการประเมินหนึ่ง
+
+งาน MOTS20 เดิมใน repo นี้เองใช้ frame-level segmentation metrics ตาม COCO-style evaluator การประเมิน official MOTS tracking ต้องมีวิธีเชื่อม track IDs และ tracking evaluator เพิ่ม ส่วน CCTV600 รอบนี้ประเมิน detector ตาม GT bbox ที่มีอยู่
+
+### 11.3 Timing ใช้นิยามเดียวกัน แต่ workload ต่างกัน
+
+Adapter total ในสองงานรวม preprocess/H2D + forward + native postprocessing/mask transfer และวัด RLE แยก Input disk/decode, packet writing, model loading, warmup, scoring และ queue time อยู่ภายนอก adapter FPS ส่วน CCTV600 เพิ่ม timers ของ input hash/read/decode, RLE, output write และ application span ระหว่าง quality pass
+
+CCTV600 มีภาพ 1920×1080 จำนวน 594 ภาพ และอีกหกภาพที่ความละเอียดต่างออกไป รวมถึง 2688×1520 ส่วน MOTS20 มีทั้ง 1920×1080 และ 640×480 จำนวนคนและจำนวน masks ที่แต่ละโมเดลส่งออกก็ต่างกัน แม้ network input จะ 640 เท่ากัน การสร้าง masks กลับ original grid จึงมีต้นทุนต่างกัน
+
+เกณฑ์ clean timing ของทั้งสองงานยกเว้นรอบที่พบ external GPU compute PID และต้องผ่าน preload idle utilization ≤5% มีการสุ่มตรวจระหว่างรันทุก 10 ภาพ MOTS20 เก็บ telemetry ด้าน driver/clocks/temperature/power มากกว่า CCTV600 ซึ่งบันทึก free VRAM/utilization/PIDs เป็นหลัก จึงยังขาดหลักฐานสำหรับรับรองสภาวะนาฬิกาและอุณหภูมิที่เหมือนกันทุกช่วง
+
+CCTV600 ระบุ matmul/cudnn TF32 flags เป็น false อย่างชัดเจน ส่วน frozen MOTS20 runner ที่ตรวจไม่ได้กำหนดสอง flags นี้โดยตรง ทั้งสองงานบันทึก FP32 บน Tesla T4 ตาราง hardware ของ NVIDIA ระบุว่า T4 ไม่รองรับ TF32 การเทียบ flags ยังคงต้องระบุระดับหลักฐานตามที่บันทึกไว้ และการย้ายการทดลองไป GPU รุ่นอื่นต้องตรวจ effective settings ใหม่ [NVIDIA hardware/precision support](https://docs.nvidia.com/deeplearning/tensorrt/archives/tensorrt-861/pdf/TensorRT-Support-Matrix-Guide.pdf)
+
+### 11.4 Preflight, completeness และข้อกำหนดทรัพยากร
+
+MOTS20 Largest เลือก common AP cap จากหลายค่าแล้วทำ full inference ครบประชากร ส่วน CCTV600 ใช้ predictions จาก preflight 100 ภาพเป็น accepted canonical observations และทำอีก 500 ภาพเมื่อ bindings ผ่าน รวม 600 quality calls ต่อโมเดล การนำกลับมาใช้ยึด input/checkpoint/config/source bindings โดยไม่มีการเลือกตามคะแนน
+
+CCTV600 ใช้ STRICT_COMPLETE แยกรายโมเดล ต้องครบ exact 600 IDs พร้อม valid packets และคะแนนหลักเป็น null เมื่อไม่ครบ เวลาหลักต้องครบสาม clean rounds ตาม result index การมีไฟล์ครบยังต้องอ่านควบคู่กับข้อจำกัด GT inventory ซึ่งอ้างการตรวจรับของผู้จัดทำ dataset และยังไม่มี independent full-inventory adjudication
+
+Free VRAM 4 GiB, free disk 20 GiB, output budget 20 GiB และเวลา 8 ชั่วโมงต่อ attempt เป็น operational guards ที่กำหนดใน CCTV600 ไม่ใช่ข้อกำหนดของนิยาม AP หรือคำรับรองว่าโมเดลต้องใช้ VRAM อย่างน้อย 4 GiB
+
+### 11.5 Correction ของผลเทียบ AP cap
+
+รายงานปิดรอบรุ่นก่อนเขียนว่าผลต่าง AP ทั้งสามค่าเป็นศูนย์ทุกโมเดล ตรวจ CAP_CHECK.json ที่ผูก hashes กับ accepted result index แล้วพบผลต่างไม่เป็นศูนย์ใน YOLOv8s, YOLO26n และ YOLOv8n
+
+ผลต่าง absolute สูงสุดคือ **AP50 ของ YOLO26n = 0.000022855779105435126** หรือประมาณ **0.002286 จุดเปอร์เซ็นต์** ขณะที่เกณฑ์รับรองคือ <0.0001 หรือ <0.01 จุดเปอร์เซ็นต์ ทุกโมเดลจึงผ่านเกณฑ์ที่ตรึงไว้ แหล่งตัวเลขอยู่ใน [PREFLIGHT_MAXDET.csv](metrics/PREFLIGHT_MAXDET.csv) การแก้ครั้งนี้เป็น correction ของคำอธิบาย โดยใช้ผลคุณภาพและ timing ที่ตรวจรับแล้วเป็นหลักฐานเดิม
+
+### 11.6 ขอบเขตการเปรียบเทียบที่รองรับ
+
+ภายใน CCTV600 ทั้ง 17 โมเดลใช้ population, eligibility, bbox scorer, ignore policy, thresholds และ timing protocol ร่วมกัน ผลจึงใช้เปรียบเทียบ checkpoint/configuration ภายใต้ขอบเขตนี้ได้ ส่วน capacity/pretraining, ความถูกต้องของ GT inventory และ uncertainty ยังเป็นข้อจำกัดที่ต้องระบุ
+
+การเทียบ MOTS20 กับ CCTV600 ใช้อธิบายแนวโน้มบนคนละ dataset ได้ โดยเขียนกำกับให้ครบว่า Mask AP หรือ Box AP, GT/eligibility แบบใด และ timing workload ใด คำอธิบายวิธีที่ตรงงานนี้คือ “นำ inference runtime และหลักการควบคุมการทดลองจาก MOTS20 มาปรับเป็น CCTV600 visible-bbox evaluation”

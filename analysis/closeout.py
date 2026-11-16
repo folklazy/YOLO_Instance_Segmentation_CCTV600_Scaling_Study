@@ -447,7 +447,7 @@ Environment ใช้ Python 3.12.3, PyTorch 2.14.0+cu130, torchvision 0.29.0+cu
 
 ตรวจ membership จากชื่อ packet จริงเทียบ population และ packet audit ทั้ง 17 ตัว อ่าน receipts ผูก hash ครบ 10,200 รายการ ตรวจ per-image CSV กับ TP/FP/FN/GT และ ledger ผล canonical ครบ 600 IDs ไม่ซ้ำต่อโมเดล missing/unexpected/invalid เป็น 0 ทั้งหมด นำ audit ที่ตรวจ readback และ saved-packet scoring แล้วกลับมาใช้ ตรวจ hash ใหม่เฉพาะไฟล์ที่ filesystem timestamps ใหม่กว่า audit พร้อมเก็บ hash ของ metrics/audit เพื่ออ้างย้อนกลับ
 
-ตรวจ source/config binding เดิมผ่านก่อนสร้างรายงาน derived ไม่ได้เรียกโมเดลหรือ full rescore เพื่อจัดตาราง ตรวจ maxDet 200 เทียบ 1000 บน 100 ภาพเดิมผ่านทั้ง 17 ตัว ผลต่าง AP ทั้งสามค่าเป็นศูนย์
+ตรวจ source/config binding เดิมผ่านก่อนสร้างรายงาน derived ไม่ได้เรียกโมเดลหรือ full rescore เพื่อจัดตาราง ตรวจ maxDet 200 เทียบ 1000 บน 100 ภาพเดิมผ่านทั้ง 17 ตัว ผลต่าง AP ทั้งสามค่าอยู่ต่ำกว่าเกณฑ์ 0.0001 ทุกโมเดล
 
 ## 2. ผลคุณภาพรวม
 

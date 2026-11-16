@@ -61,6 +61,8 @@
 
 ## รูปแบบที่นำมาจาก MOTS20
 
+[ตารางเทียบ protocol และข้อจำกัดตามโค้ดที่ใช้จริง](METRIC_GUIDE_TH.md#protocol-comparison)
+
 ตรวจ Master และทั้งห้า tier ของ [MOTS20 study](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study) จริง รายการเอกสาร revision และ SHA256 ที่ตรวจอยู่ใน [presentation evidence](metrics/PRESENTATION_REVISION.json) นำบทบาท README/REPORT/RESULTS/PRESENTATION, เจ็ด winners, scaling, Pareto, stage composition และตัวอย่าง matching มาปรับกับข้อมูลชุดนี้
 
 CCTV600 ใช้ Box AP กับ visible bbox ≥50 px และ rectangle-ignore union ส่วน MOTS20 มี GT person silhouettes และ Mask AP จึงต้องระบุชนิด metric และ dataset กำกับ ภาพจริงของ CCTV600 ใช้ private gallery ตามนโยบายเดิม รายละเอียดร่วมและส่วนต่างอยู่ใน METRIC_GUIDE_TH.md
