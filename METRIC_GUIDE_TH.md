@@ -128,7 +128,7 @@ MiB ใช้ 1,048,576 bytes VRAM จาก benchmark นี้ยังไม�
 | ACTIVE_600_TIMING.csv | ผลรวมวินาที ค่าเฉลี่ย ms/ภาพ และ coverage ของ quality timers |
 | MODEL_COMPLEXITY_MASTER.csv | params integer, GFLOPs estimate, checkpoint MB |
 | PER_GROUP_RESULTS.csv | Day/night AP และ counts หรือ size-band recall ช่องที่นิยามไม่ได้เว้นว่าง |
-| TIER_WINNERS.csv | ผู้ได้ค่าสูงสุดแต่ละ metric ในแต่ละ tier รวม ties ถ้ามี |
+| TIER_WINNERS.csv | เจ็ดเป้าหมายต่อ tier แยกทิศทาง max/min สำหรับคะแนน เวลา FPS และ allocated VRAM |
 | SCALING_DELTAS.csv | 13 คู่ × 11 metrics ความต่าง smaller−larger คำนวณ Decimal จากสถิติเต็ม |
 | NEAR_TIES.csv | คู่ที่ AP ต่างไม่เกิน 0.1 จุดเปอร์เซ็นต์ พร้อมทิศทาง B−A |
 | PARETO_FRONTIER / PIPELINE / VRAM.csv | แกนต้นทุนตามชื่อ พร้อม comparison_models และ nondominated |
@@ -142,3 +142,9 @@ METRICS.json และ PACKET_AUDIT.json ใน outputs ของแต่ละ
 นำวิธีจัดกลุ่ม X/E, L/C, M, S, N, การแสดง AP/P/R/F1, scaling, complexity, timing composition และ Pareto มาต่อยอดจากงาน MOTS20 เดิม พร้อมเปลี่ยน metric/GT policy ให้ตรงกับ CCTV600 แหล่งเดิมอยู่ใน [MOTS20 Scaling Study](https://github.com/folklazy/YOLO_Instance_Segmentation_MOTS20_Scaling_Study)
 
 ผลนี้รองรับการเปรียบเทียบ checkpoint/configuration บนข้อมูลที่รับรองอยู่ ยังไม่มี full-person GT mask สำหรับ Person Mask AP, track IDs สำหรับ tracking หรือ uncertainty analysis สำหรับคำอ้างนัยสำคัญ
+
+## 10. ตารางประกอบการนำเสนอ
+
+TIMING_COMPOSITION.csv คง stage means เดิมและเพิ่มสัดส่วน preprocess/forward/postprocess ต่อ adapter total ส่วน PLOT_READY_RESULTS.csv เพิ่ม family, display order และ Pareto flags โดยคะแนน/เวลาคงเดิม NEAR_TIE_RESOURCE_DELTAS.csv ใช้ B−A และหาร A สำหรับร้อยละสัมพัทธ์ ทิศทางนี้ต่างจาก SCALING_DELTAS.csv ที่ใช้ smaller−larger
+
+TIER_WINNERS.csv มีเจ็ดเป้าหมายในแต่ละ tier ได้แก่ Box AP, AP75, Recall, forward time, adapter time, FPS และ allocated VRAM คะแนน/FPS ใช้ค่าสูงสุด ส่วนเวลา/VRAM ใช้ค่าต่ำสุด เก็บ exact ties ทุกตัวและเก็บค่าคะแนนต้นฉบับเป็น fraction
